@@ -49,9 +49,9 @@
             <Font size="18.0" />
          </font>
       </PasswordField>
-      <Label fx:id="status" layoutX="347.0" layoutY="113.0" prefHeight="51.0" prefWidth="224.0" textFill="#493f3f4d">
+      <Label fx:id="status" layoutX="347.0" layoutY="113.0" prefHeight="51.0" prefWidth="224.0">
          <font>
-            <Font size="18.0" />
+            <Font size="21.0" />
          </font>
       </Label>
       <TextField fx:id="pword" layoutX="166.0" layoutY="426.0" promptText="Heslo">

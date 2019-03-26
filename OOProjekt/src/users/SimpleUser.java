@@ -1,4 +1,4 @@
-package main;
+package users;
 
 public class SimpleUser implements User {
 	private String name;

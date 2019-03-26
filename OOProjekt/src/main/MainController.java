@@ -1,5 +1,5 @@
 package main;
-
+import gui.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -42,8 +42,8 @@ public class MainController {
 		
 		if(username.getText().equals("user") && password.getText().equals("pass")) {
 			Stage primaryStage = new Stage();
-			status.setText("Prihlasenie uspesne");
-			Parent root = FXMLLoader.load(getClass().getResource("front.fxml"));
+			status.setText("Prihlásenie úspešné");
+			Parent root = FXMLLoader.load(getClass().getResource("/gui/front.fxml"));
 			Scene scene = new Scene(root);
 			primaryStage.setTitle("zaver");
 			primaryStage.setScene(scene);
@@ -55,10 +55,14 @@ public class MainController {
 			
 		}
 			else {
-				status.setText("Prihlasenie neuspesne");
+				status.setText("Prihlásenie neúspešné");
 		}
 	}
 	
+	/**
+	 * @param event
+	 * @throws Exception
+	 */
 	public void register(ActionEvent event) throws Exception {
 		
 		if(fname.getText().isEmpty() || lname.getText().isEmpty()|| email.getText().isEmpty()
@@ -73,6 +77,11 @@ public class MainController {
 			
 		}
 	}
+	/**
+	 * @param fxmlName
+	 * @param title
+	 * @throws IOException
+	 */
 	public void nextStage(String fxmlName, String title) throws IOException {
 		Stage primaryStage = new Stage();
 		Parent root = FXMLLoader.load(getClass().getResource(fxmlName));

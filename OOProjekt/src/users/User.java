@@ -1,4 +1,4 @@
-package main;
+package users;
 
  interface User {
 	 void setName(String name);

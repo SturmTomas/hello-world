@@ -1,8 +1,8 @@
-package main;
+package users;
 
 import java.util.ArrayList;
 
-public class UsersArray {
+public class UsersArray {  // serializable 
 	
 	 ArrayList<User> usersArray;
 

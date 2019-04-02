@@ -2,14 +2,11 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="572.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
    <children>
       <TextField layoutX="191.0" layoutY="370.0" prefHeight="35.0" prefWidth="468.0" promptText="Druh">
          <font>
@@ -31,35 +28,6 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <MenuBar layoutY="24.0" prefHeight="26.0" prefWidth="800.0">
-         <menus>
-            <Menu mnemonicParsing="false" text="Menu">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="osobné údaje" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Platby">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Delete" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="About" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Pridanie ">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="About" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Pomoc">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="About" />
-               </items>
-            </Menu>
-         </menus>
-      </MenuBar>
       <TextField layoutX="191.0" layoutY="426.0" prefHeight="35.0" prefWidth="468.0" promptText="Krajina pôvodu">
          <font>
             <Font size="18.0" />
@@ -70,7 +38,7 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <Button layoutX="288.0" layoutY="486.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="240.0" text="Uložiť zmeny">
+      <Button fx:id="ulozitZmeny" layoutX="288.0" layoutY="486.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="240.0" text="Uložiť zmeny">
          <font>
             <Font size="24.0" />
          </font>

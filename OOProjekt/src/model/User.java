@@ -1,10 +1,12 @@
-package users;
+package model;
 
  interface User {
-	 void setName(String name);
-	String getName();
+	void setEmail(String mail);
+	
+	String getEmail();
 	
 	void setPassword(String password);
+	
 	String getPassword();
 	
 }

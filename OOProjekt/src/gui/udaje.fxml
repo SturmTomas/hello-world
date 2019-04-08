@@ -6,58 +6,57 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="557.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="557.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PersonDataController">
    <children>
-      <TextField layoutX="430.0" layoutY="368.0" prefHeight="39.0" prefWidth="227.0" promptText="Mesto">
+         <TextField fx:id="fname" layoutX="165.0" layoutY="137.0" promptText="Meno" >
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField layoutX="191.0" layoutY="368.0" prefHeight="39.0" prefWidth="227.0" promptText="Poštové smerovacie číslo">
+            <TextField fx:id="lname" layoutX="403.0" layoutY="137.0" prefHeight="39.0" prefWidth="233.0" promptText="Priezvisko">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField layoutX="191.0" layoutY="308.0" prefHeight="35.0" prefWidth="468.0" promptText=" Adresa trvalého pobytu">
+            <TextField fx:id="datnar" layoutX="166.0" layoutY="191.0" prefHeight="39.0" prefWidth="468.0" promptText="Dátum narodenia">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField layoutX="191.0" layoutY="251.0" prefHeight="39.0" prefWidth="468.0" promptText="Číslo občianskeho preukazu">
+            <TextField fx:id="cop" layoutX="166.0" layoutY="247.0" prefHeight="39.0" prefWidth="468.0" promptText="Číslo občianskeho preukazu">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField layoutX="191.0" layoutY="191.0" prefHeight="39.0" prefWidth="468.0" promptText="Dátum narodenia">
+   
+      <TextField fx:id="adresa" layoutX="166.0" layoutY="309.0" prefHeight="35.0" prefWidth="468.0" promptText=" Adresa trvalého pobytu">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
+            <TextField fx:id="psc" layoutX="166.0" layoutY="368.0" prefHeight="39.0" prefWidth="227.0" promptText="Poštové smerovacie číslo">
+         <font>
+            <Font size="18.0" />
+         </font>
+         </TextField>
+      <TextField fx:id="mesto" layoutX="406.0" layoutY="368.0" prefHeight="39.0" prefWidth="227.0" promptText="Mesto">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+
+
       <Label layoutX="338.0" layoutY="84.0" prefHeight="46.0" prefWidth="173.0" text=" Osobné údaje" textAlignment="CENTER">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Button layoutX="334.0" layoutY="489.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="191.0" text="Uložiť zmeny">
+
+
+      <Button fx:id="ulozitZmeny" layoutX="280.0" layoutY="446.0" mnemonicParsing="false" onAction="#addChanges" prefHeight="54.0" prefWidth="240.0" text="Uložiť zmeny">
          <font>
-            <Font size="18.0" />
+            <Font size="24.0" />
          </font>
       </Button>
-      <TextField layoutX="191.0" layoutY="422.0" prefHeight="35.0" prefWidth="468.0" promptText="Číslo kreditnej karty">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </TextField>
-      <TextField fx:id="fname" layoutX="190.0" layoutY="130.0" promptText="Meno">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </TextField>
-      <TextField fx:id="lname" layoutX="425.0" layoutY="130.0" prefHeight="39.0" prefWidth="233.0" promptText="Priezvisko">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </TextField>
    </children>
 </AnchorPane>

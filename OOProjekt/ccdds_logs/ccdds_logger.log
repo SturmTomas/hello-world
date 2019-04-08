@@ -64,3 +64,69 @@ per_coupling: 		0.0
 target_per_cou: 	0.0
 time: 				210812970
 
+Apr 02, 2019 6:44:49 PM dp.Launcher log
+INFO: 
+project: 			C:/Users/Tom Burka/OOProjekt/OOProjekt
+classes: 			9
+modules: 			4
+cohesion: 			0.15
+max_coh: 			0.5555555555555556
+target_coh: 		0.3333333333333333
+coupling: 			0.5
+max_cou: 			0.5555555555555556
+target_cou: 		0.2
+win_global: 		true
+win_hc: 			false
+win_hc_max_cou: 	false
+orig_ccddi: 		0.4149999999999999
+target_ccddi: 		0.006428571428571478
+per_cohesion: 		26.999999999999996
+target_per_coh: 	60.0
+per_coupling: 		89.99999999999999
+target_per_cou: 	36.0
+time: 				1549300756
+
+Apr 03, 2019 4:28:02 PM dp.Launcher log
+INFO: 
+project: 			C:/Users/Tom Burka/OOProjekt/OOProjekt
+classes: 			13
+modules: 			4
+cohesion: 			0.14285714285714285
+max_coh: 			0.5384615384615384
+target_coh: 		0.3227443609022556
+coupling: 			0.5
+max_cou: 			0.5384615384615384
+target_cou: 		0.21052631578947367
+win_global: 		false
+win_hc: 			true
+win_hc_max_cou: 	false
+orig_ccddi: 		0.43163265306122445
+target_ccddi: 		0.004820085929108486
+per_cohesion: 		26.53061224489796
+target_per_coh: 	59.93823845327605
+per_coupling: 		92.85714285714286
+target_per_cou: 	39.097744360902254
+time: 				2147095972
+
+Apr 05, 2019 9:55:41 AM dp.Launcher log
+INFO: 
+project: 			C:/Users/Tom Burka/OOProjekt/OOProjekt
+classes: 			13
+modules: 			4
+cohesion: 			0.14285714285714285
+max_coh: 			0.6923076923076923
+target_coh: 		0.3909026297085994
+coupling: 			0.75
+max_cou: 			0.6923076923076923
+target_cou: 		0.2835820895522388
+win_global: 		false
+win_hc: 			true
+win_hc_max_cou: 	false
+orig_ccddi: 		0.5384920634920635
+target_ccddi: 		0.022490720998183972
+per_cohesion: 		20.634920634920633
+target_per_coh: 	56.46371318013102
+per_coupling: 		108.33333333333333
+target_per_cou: 	40.96185737976782
+time: 				4082653537
+

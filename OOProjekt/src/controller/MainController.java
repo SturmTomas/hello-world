@@ -10,36 +10,34 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import main.Main;
+import model.PersonDataModel;
 
 import java.io.IOException;
 
 import javafx.event.*;
 
 public class MainController {
-	@FXML 
-	private Label status;
-
-
-	@FXML
-	AnchorPane rootPane;
-
+	
+	@FXML private Label status;
+	@FXML AnchorPane rootPane;
 	
 	
-	
+	public void myPersonData(ActionEvent event) throws Exception {
+		
+		nextPane("mojeUdaje");
+		//PersonDataController.showMyData(event);
+	}
 
 	
 	public void personData(ActionEvent event) throws Exception {
 		
-		//nextScene("udaje", "Osobné údaje");
 		nextPane("udaje");
 	}
 	
 public void addAnimal(ActionEvent event) throws Exception {
 		
-		//nextScene("zvierata", "Moje zvieratká");
 		nextPane("zvierata");
 	}
-	
 	
 	public Label getStatus() {
 	return status;

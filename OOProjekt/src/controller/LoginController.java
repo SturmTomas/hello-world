@@ -25,10 +25,7 @@ public class LoginController implements Initializable  {
 	@FXML
 	private Button btnreg;
 	@FXML
-	private TextField fname;
-	@FXML
-	private TextField lname;
-	@FXML
+	
 	private TextField pword;
 	@FXML
 	private TextField reppword;
@@ -66,6 +63,7 @@ public void login(ActionEvent event) throws Exception {
 	
 			if(LoginModel.login(new SimpleUser(username.getText(),password.getText()))) {
 			nextScene("front", "front");
+			System.out.println(Main.getLoggedUser());
 			return;
 			}
 	
@@ -94,7 +92,7 @@ public void register(ActionEvent event) throws Exception {
 	}
 	
 		LoginModel.register(new SimpleUser(email.getText(),pword.getText()));
-		nextScene("front", "front");	
+		nextScene("front", "Najlepšia appka na celom šírom svete");	
 }
 		
 }

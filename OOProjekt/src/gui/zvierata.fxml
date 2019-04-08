@@ -1,47 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="572.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="572.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MyAnimalController">
    <children>
-      <TextField layoutX="191.0" layoutY="370.0" prefHeight="35.0" prefWidth="468.0" promptText="Druh">
+      <TextField fx:id="type" layoutX="166.0" layoutY="369.0" prefHeight="35.0" prefWidth="468.0" promptText="Druh">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField layoutX="191.0" layoutY="313.0" prefHeight="35.0" prefWidth="468.0" promptText="Kategória">
+      <TextField fx:id="gender" layoutX="166.0" layoutY="246.0" prefHeight="35.0" prefWidth="468.0" promptText="Pohlavie">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField layoutX="191.0" layoutY="253.0" prefHeight="35.0" prefWidth="468.0" promptText="Pohlavie">
+      <TextField fx:id="name" layoutX="166.0" layoutY="185.0" prefHeight="39.0" prefWidth="468.0" promptText="Meno zvieratka">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField layoutX="191.0" layoutY="196.0" prefHeight="39.0" prefWidth="468.0" promptText="Meno zvieratka">
+      <TextField fx:id="pob" layoutX="166.0" layoutY="424.0" prefHeight="35.0" prefWidth="468.0" promptText="Krajina pôvodu">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField layoutX="191.0" layoutY="426.0" prefHeight="35.0" prefWidth="468.0" promptText="Krajina pôvodu">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </TextField>
-      <Label layoutX="318.0" layoutY="128.0" prefHeight="46.0" prefWidth="214.0" text="Pridanie zvieratka" textAlignment="CENTER">
+      <Label layoutX="293.0" layoutY="107.0" prefHeight="46.0" prefWidth="214.0" text="Pridanie zvieratka" textAlignment="CENTER">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Button fx:id="ulozitZmeny" layoutX="288.0" layoutY="486.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="240.0" text="Uložiť zmeny">
+      <Button fx:id="ulozitZmeny" layoutX="280.0" layoutY="486.0" mnemonicParsing="false" onAction="#addAnimal" prefHeight="54.0" prefWidth="240.0" text="Uložiť zmeny">
          <font>
             <Font size="24.0" />
          </font>
       </Button>
+      <ChoiceBox layoutX="166.0" layoutY="310.0" prefHeight="39.0" prefWidth="468.0" />
    </children>
 </AnchorPane>

@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="557.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PersonDataController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="557.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PersonDataController">
    <children>
          <TextField fx:id="fname" layoutX="165.0" layoutY="137.0" promptText="Meno" >
          <font>
@@ -53,7 +53,7 @@
       </Label>
 
 
-      <Button fx:id="ulozitZmeny" layoutX="280.0" layoutY="446.0" mnemonicParsing="false" onAction="#addChanges" prefHeight="54.0" prefWidth="240.0" text="Uložiť zmeny">
+      <Button fx:id="ulozitZmeny" layoutX="280.0" layoutY="446.0" mnemonicParsing="false"  prefHeight="54.0" prefWidth="240.0" text="Uložiť zmeny">
          <font>
             <Font size="24.0" />
          </font>

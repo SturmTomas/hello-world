@@ -7,29 +7,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
    <children>
-      <TextField fx:id="email" layoutX="167.0" layoutY="373.0" prefHeight="39.0" prefWidth="468.0" promptText="E-mail">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </TextField>
-      <Label ellipsisString="" layoutX="299.0" layoutY="284.0" prefHeight="18.0" prefWidth="234.0" text="Registrácia" textAlignment="CENTER">
-         <font>
-            <Font name="System Bold" size="30.0" />
-         </font>
-      </Label>
-      <Button fx:id="btnreg" layoutX="246.0" layoutY="534.0" mnemonicParsing="false" onAction="#register" prefHeight="51.0" prefWidth="288.0" text="Registrovať">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Button>
-      <Button fx:id="login" defaultButton="true" layoutX="83.0" layoutY="178.0" mnemonicParsing="false" onAction="#login" text="prihlásiť">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Button>
-      <TextField fx:id="username" layoutX="31.0" layoutY="49.0" promptText="Prihlasovacie meno">
+    <TextField fx:id="username" layoutX="31.0" layoutY="49.0" promptText="Prihlasovacie meno">
          <font>
             <Font size="18.0" />
          </font>
@@ -39,11 +19,28 @@
             <Font size="18.0" />
          </font>
       </PasswordField>
+        
+      <Button fx:id="login" defaultButton="true" layoutX="83.0" layoutY="178.0" mnemonicParsing="false" onAction="#login" text="prihlásiť">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Label ellipsisString="" layoutX="299.0" layoutY="284.0" prefHeight="18.0" prefWidth="234.0" text="Registrácia" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Label>
+      
       <Label fx:id="status" layoutX="347.0" layoutY="113.0" prefHeight="51.0" prefWidth="224.0">
          <font>
             <Font size="21.0" />
          </font>
       </Label>
+            <TextField fx:id="email" layoutX="167.0" layoutY="373.0" prefHeight="39.0" prefWidth="468.0" promptText="E-mail">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
       <TextField fx:id="pword" layoutX="166.0" layoutY="426.0" promptText="Heslo">
          <font>
             <Font size="18.0" />
@@ -54,6 +51,11 @@
             <Font size="18.0" />
          </font>
       </TextField>
+       <Button fx:id="btnreg" layoutX="246.0" layoutY="534.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="288.0" text="Registrovať">
+         <font>
+            <Font size="24.0" />
+         </font>
+	    </Button>
       <Label fx:id="isConnected" layoutX="304.0" layoutY="195.0" prefHeight="39.0" prefWidth="189.0" />
    </children>
 </AnchorPane>

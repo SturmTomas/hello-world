@@ -7,14 +7,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="572.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MyAnimalController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="572.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MyAnimalController">
    <children>
-      <TextField fx:id="type" layoutX="166.0" layoutY="369.0" prefHeight="35.0" prefWidth="468.0" promptText="Druh">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </TextField>
-      <TextField fx:id="gender" layoutX="166.0" layoutY="246.0" prefHeight="35.0" prefWidth="468.0" promptText="Pohlavie">
+      <TextField fx:id="cast" layoutX="166.0" layoutY="369.0" prefHeight="35.0" prefWidth="468.0" promptText="Druh">
          <font>
             <Font size="18.0" />
          </font>
@@ -24,21 +19,17 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="pob" layoutX="166.0" layoutY="424.0" prefHeight="35.0" prefWidth="468.0" promptText="Krajina pôvodu">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </TextField>
       <Label layoutX="293.0" layoutY="107.0" prefHeight="46.0" prefWidth="214.0" text="Pridanie zvieratka" textAlignment="CENTER">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Button fx:id="ulozitZmeny" layoutX="280.0" layoutY="486.0" mnemonicParsing="false" onAction="#addAnimal" prefHeight="54.0" prefWidth="240.0" text="Uložiť zmeny">
+      <Button fx:id="ulozitZmeny" layoutX="280.0" layoutY="448.0" mnemonicParsing="false" onAction="#addAnimal" prefHeight="54.0" prefWidth="240.0" text="Uložiť zmeny">
          <font>
             <Font size="24.0" />
          </font>
       </Button>
-      <ChoiceBox layoutX="166.0" layoutY="310.0" prefHeight="39.0" prefWidth="468.0" />
+      <ChoiceBox fx:id="type" layoutX="166.0" layoutY="310.0" prefHeight="39.0" prefWidth="468.0" />
+      <ChoiceBox fx:id="gender" layoutX="166.0" layoutY="246.0" prefHeight="39.0" prefWidth="468.0" />
    </children>
 </AnchorPane>

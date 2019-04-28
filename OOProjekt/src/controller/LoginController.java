@@ -1,5 +1,6 @@
 package controller;
 import database.*;
+import model.*;
 import gui.*;
 
 import java.io.IOException;
@@ -18,14 +19,13 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import main.*;
 import model.LoginModel;
-import model.SimpleUser;
 
-public class LoginController implements Initializable  {
+
+public class LoginController   {
 
 	@FXML
 	private Button btnreg;
 	@FXML
-	
 	private TextField pword;
 	@FXML
 	private TextField reppword;
@@ -44,16 +44,19 @@ public class LoginController implements Initializable  {
 	
 	
 	@FXML Label isConnected; 
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		if (LoginModel.isDatabaseConnected()) {
-		  System.out.println("Connected");
-		}
-		else {
-			isConnected.setText("Not connected");
-				System.out.println("Not connected");
-		}
 	
+	@FXML private void initialize() {
+		
+		btnreg.setOnAction((e)-> {
+			try {
+
+				register();
+			} catch (Exception e1) {
+				
+				e1.printStackTrace();
+			}
+		});
+		
 	}
 	
 public void login(ActionEvent event) throws Exception {
@@ -61,7 +64,8 @@ public void login(ActionEvent event) throws Exception {
 		
 		//if(username.getText().equals("") && password.getText().equals("")) 
 	
-			if(LoginModel.login(new SimpleUser(username.getText(),password.getText()))) {
+			if(LoginModel.login(new SimpleUser(username.getText(),password.getText()))) 
+			{
 			nextScene("front", "front");
 			System.out.println(Main.getLoggedUser());
 			return;
@@ -80,19 +84,30 @@ public void nextScene(String fxmlName, String title) throws IOException {
 	window.show();
 }
 
-public void register(ActionEvent event) throws Exception {
+
+@FXML
+public void register() throws Exception {
 	
-	if( !email.getText().matches("[a-zA-Z0-9.-_]+@[a-z]+.[a-z]+")	|| pword.getText().isEmpty() || reppword.getText().isEmpty()) {
+	System.out.println("haloo");
+		if( !email.getText().matches("[a-zA-Z0-9.-_]+@[a-z]+.[a-z]+")	|| pword.getText().isEmpty() || reppword.getText().isEmpty()) {
 		status.setText("Registrácia neúspešná\n");
 		return;
-	}
-	if ( !(reppword.getText().equals(pword.getText()))){
+		}
+		if ( !(reppword.getText().equals(pword.getText()))){
 		status.setText("Registrácia neúspešná\n Heslá sa nezhodujú");
-	return;
-	}
-	
+		return;
+		}
+
 		LoginModel.register(new SimpleUser(email.getText(),pword.getText()));
-		nextScene("front", "Najlepšia appka na celom šírom svete");	
+	
+			try {
+				nextScene("front", "Najlepšia appka na celom šírom svete");
+			} catch (IOException e1) {
+				
+				e1.printStackTrace();
+			}
+
+
 }
 		
 }

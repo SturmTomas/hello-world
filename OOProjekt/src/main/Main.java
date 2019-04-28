@@ -18,7 +18,7 @@ public class Main extends Application{
 	
 	private static User loggedUser;
 	private static Stage window;
-	private static HashMap<String, User> hashMap = new HashMap<String, User>();
+	
 	
 	public static void main(String[] args) {
 		launch(args);
@@ -26,7 +26,8 @@ public class Main extends Application{
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-
+		//HashMap<String, SimpleUser> hashMap = new HashMap<String, SimpleUser>();
+		//SerializeModel.serialize(hashMap);
 		Parent root = FXMLLoader.load(getClass().getResource("/gui/gui.fxml"));
 		Scene scene = new Scene(root);
 		
@@ -35,19 +36,8 @@ public class Main extends Application{
 		primaryStage.show();
 		
 		window = primaryStage;
-		
-		HashMap<String, User> hashMap = SerializeModel.deserialize();
-		
-	      System.out.println("Deserialized HashMap");
-	      // Display content using Iterator
-	      Set set = hashMap.entrySet();
-	      Iterator iterator = set.iterator();
-	      while(iterator.hasNext()) {
-	         Map.Entry mentry = (Map.Entry)iterator.next();
-	         System.out.print("key: "+ mentry.getKey() + " & Value: ");
-	         System.out.println(mentry.getValue());
-	      }
-	      
+	
+		      
 
 	}
 	 public static Stage getPrimaryStage() {
@@ -59,11 +49,5 @@ public class Main extends Application{
 		public static void setLoggedUser(User loggedUser) {
 			Main.loggedUser = loggedUser;
 		}
-		public static HashMap<String, User> getHashMap() {
-			return hashMap;
-		}
 
-		public static void setHashMap(HashMap<String, User> hashMap) {
-			Main.hashMap = hashMap;
-		}
 }

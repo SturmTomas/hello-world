@@ -1,11 +1,12 @@
 package model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class SimpleUser extends User implements Serializable {
     
-	private String password;
-	private String email;
+	
 	private String lname;
 	private String fname;
 	private String adresa;
@@ -14,24 +15,25 @@ public class SimpleUser extends User implements Serializable {
 	private String cop;
 	private String datnar;
 	
-	private Animal animal;
+	private HashMap<String, Animal> animals;
 	
 	
 	public SimpleUser(String email,String password) {
 		super(email, password);
 	}	
-	public SimpleUser(Animal animal) {
-		animal = this.animal;
+
+	public Animal getAnimal(String name) {
+		return animals.get(name);
 	}
-	
-	public Animal getAnimal() {
-		return animal;
-	}
-	public void setAnimal(Animal animal) {
-		this.animal = animal;
+	public boolean addAnimal(Animal animal) {
+		if(animals == null) {
+		 animals = new HashMap<String, Animal>();
+		}
+		animals.put(animal.getName(),animal);
+		return true;
 	}
 	public SimpleUser(String fname, String lname, String adresa,String datnar
-					  ,Integer psc,String cop,String mesto,Animal animal) {
+					  ,Integer psc,String cop,String mesto) {
 		this.fname = fname;
 		this.lname = lname;
 		this.adresa = adresa;
@@ -39,7 +41,6 @@ public class SimpleUser extends User implements Serializable {
 		this.psc = psc;
 		this.cop = cop;
 		this.mesto = mesto;
-		this.animal = animal;
 	}
 	
 	public String getDatnar() {

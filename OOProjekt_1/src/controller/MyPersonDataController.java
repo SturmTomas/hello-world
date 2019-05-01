@@ -9,6 +9,7 @@ import main.Main;
 import model.HashMapNotFoundException;
 import model.SerializeModel;
 import model.SimpleUser;
+import model.User;
 
 public class MyPersonDataController {
 
@@ -22,8 +23,8 @@ public class MyPersonDataController {
 	
 	@FXML private void initialize() throws HashMapNotFoundException {
 
-		HashMap<String, SimpleUser> hashMap = SerializeModel.deserialize();
-		SimpleUser su = hashMap.get(Main.getLoggedUser().getEmail());
+		HashMap<String, User> hashMap = SerializeModel.deserialize();
+		SimpleUser su = (SimpleUser) hashMap.get(Main.getLoggedUser().getEmail());
 
 		if(su != null) {
 			fname1.setText(su.getFname());

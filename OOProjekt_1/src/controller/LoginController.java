@@ -60,31 +60,38 @@ public class LoginController   {
 	}
 
 	
-public void login(ActionEvent event) throws Exception {
-		 
-			if(LoginModel.login(new SimpleUser(username.getText(),password.getText()))) 
-			{
-			nextScene("front", "front");
-			System.out.println(Main.getLoggedUser());
-			return;
+	public void login(ActionEvent event) throws Exception {
+
+		if( username.getText().equals(Main.getAdmin().getEmail()) && password.getText().equals(Main.getAdmin().getPassword())){
+			nextScene("adminView","Admin View");
+		}else {
+
+			if (LoginModel.login(username.getText(), password.getText()) instanceof SimpleUser) {
+				nextScene("front", "front");
+				System.out.println(Main.getLoggedUser());
+				return;
+			}else if(LoginModel.login(username.getText(), password.getText()) instanceof Employee){
+				nextScene("adminView","Admin View");
 			}
-	
-				status.setText("Prihlásenie neúspešné");
+
+			status.setText("Prihlásenie neúspešné");
+		}
 	}
-public void nextScene(String fxmlName, String title) throws IOException {
-	Stage window = Main.getPrimaryStage();
-	Parent root = FXMLLoader.load(getClass().getResource("/gui/"+fxmlName+".fxml"));
-	Scene scene = new Scene(root);
-	window.setTitle("E-pets -"+title);
-	window.setScene(scene);
-    
-	window.getScene().getWindow();
-	window.show();
-}
+
+	public void nextScene(String fxmlName, String title) throws IOException {
+		Stage window = Main.getPrimaryStage();
+		Parent root = FXMLLoader.load(getClass().getResource("/gui/"+fxmlName+".fxml"));
+		Scene scene = new Scene(root);
+		window.setTitle("E-pets -"+title);
+		window.setScene(scene);
+
+		window.getScene().getWindow();
+		window.show();
+	}
 
 
-@FXML
-public void register() throws Exception {
+	@FXML
+	public void register() throws Exception {
 	
 	System.out.println("haloo");
 		if( !email.getText().matches("[a-zA-Z0-9.-_]+@[a-z]+.[a-z]+")	|| pword.getText().isEmpty() || reppword.getText().isEmpty()) {
@@ -97,7 +104,7 @@ public void register() throws Exception {
 		}
 		
 		boolean exist = true;
-		HashMap<String, SimpleUser> hashMap = null;
+		HashMap<String, User> hashMap = null;
 		
 		try {
 			hashMap = SerializeModel.deserialize();
@@ -121,10 +128,8 @@ public void register() throws Exception {
 				
 				e1.printStackTrace();
 			}
+	}
 
-
-}
-		
 }
 
 

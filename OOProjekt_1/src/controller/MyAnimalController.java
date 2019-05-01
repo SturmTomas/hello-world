@@ -26,8 +26,8 @@ public class MyAnimalController {
 	
 	@FXML private void initialize() throws HashMapNotFoundException {
 		
-		HashMap<String,SimpleUser> hashMap = SerializeModel.deserialize();
-		SimpleUser su = hashMap.get(Main.getLoggedUser().getEmail());
+		HashMap<String,User> hashMap = SerializeModel.deserialize();
+		SimpleUser su = (SimpleUser) hashMap.get(Main.getLoggedUser().getEmail());
 		HashMap<String, Animal> animals = su.getAllAnimals();
 		List<Animal> list = new ArrayList<Animal>();
 

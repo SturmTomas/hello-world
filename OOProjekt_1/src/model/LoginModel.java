@@ -5,6 +5,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.*;
 import java.util.HashMap;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 import controller.LoginController;
 import controller.MainController;
@@ -12,55 +15,59 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import main.Main;
 
+import static java.util.concurrent.Executors.newSingleThreadScheduledExecutor;
+
 
 public class LoginModel {
-	
-	
-	public static void register(SimpleUser simpleUser)  {
-		HashMap<String, SimpleUser> hashMap = null;
-	
+
+
+	public static void register(User user) {
+		HashMap<String, User> hashMap = null;
+
 		try {
 			hashMap = SerializeModel.deserialize();
 		} catch (HashMapNotFoundException e) {
-			hashMap = new HashMap<String, SimpleUser>();
+			hashMap = new HashMap<String, User>();
 			SerializeModel.serialize(hashMap);
 		}
 
-		simpleUser.setUcet(100.0);
-		hashMap.put(simpleUser.getEmail(), simpleUser);
+		if (user instanceof SimpleUser) {
+			((SimpleUser) user).setUcet(100.0);
+			Main.setLoggedUser(user);
+		}
+		hashMap.put(user.getEmail(), user);
 		SerializeModel.serialize(hashMap);
-		Main.setLoggedUser(simpleUser);
-	
-			
 
 	}
 	
-	public static boolean login(SimpleUser simpleUser) {
+	public static User login(String email, String password ) {
 		
-		HashMap<String, SimpleUser> hashMap = null;
+		HashMap<String, User> hashMap = null;
 		
 		try {
 			hashMap = SerializeModel.deserialize();
 		} catch (HashMapNotFoundException e) {
-			hashMap = new HashMap<String, SimpleUser>();
+			hashMap = new HashMap<String, User>();
 			SerializeModel.serialize(hashMap);
 		}
 		
-		SimpleUser hMUser = hashMap.get(simpleUser.getEmail());
+		User hMUser = hashMap.get(email);
 		
-		if (hashMap.containsKey(simpleUser.getEmail())) {
+		if (hashMap.containsKey(email)) {
 			String pw = hMUser.getPassword();
-			String sp = simpleUser.getPassword();
-			
-			if (pw.equals(sp)) {
-				System.out.println(simpleUser.getPassword()+"\n"+simpleUser.getEmail());
+
+			if (pw.equals(password)) {
+				System.out.println(password+"\n"+email);
 				Main.setLoggedUser(hMUser);
-				return true;
+				return hMUser;
 			}		 
 		}
 		
-		return false;
+		return null;
 	}
+
+
+
 	
 
 }

@@ -11,6 +11,7 @@ import animals.Cat;
 import animals.Dog;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -18,9 +19,11 @@ import main.Main;
 import model.HashMapNotFoundException;
 import model.SerializeModel;
 import model.SimpleUser;
+import model.User;
 
 public class PaymentController {
 
+	@FXML private TextField moneyField;
 	@FXML private Label nedostatokLabel;
 	@FXML private Label ucetLabel;
 	@FXML private TableView<Animal> tableToPay;
@@ -32,8 +35,8 @@ public class PaymentController {
 	}
 
 	private void updateTableView() throws HashMapNotFoundException {
-		HashMap<String,SimpleUser> hashMap = SerializeModel.deserialize();
-		SimpleUser su = hashMap.get(Main.getLoggedUser().getEmail());
+		HashMap<String, User> hashMap = SerializeModel.deserialize();
+		SimpleUser su = (SimpleUser) hashMap.get(Main.getLoggedUser().getEmail());
 		ucetLabel.setText("Zostatok na ˙Ëte: "+ su.getUcet().toString()+ " EUR");
 
 		HashMap<String, Animal> animals = su.getAllAnimals();
@@ -116,13 +119,13 @@ public class PaymentController {
 	}
 
 	private void payForAnimal(String animalName)  {
-		HashMap<String,SimpleUser> hashMap = null;
+		HashMap<String,User> hashMap = null;
 		try {
 			hashMap = SerializeModel.deserialize();
 		} catch (HashMapNotFoundException e) {
 			e.printStackTrace();
 		}
-		SimpleUser su = hashMap.get(Main.getLoggedUser().getEmail());
+		SimpleUser su = (SimpleUser) hashMap.get(Main.getLoggedUser().getEmail());
 		HashMap<String, Animal> animals = su.getAllAnimals();
 		Animal animal = animals.get(animalName);
 		if( animal instanceof Dog){
@@ -170,6 +173,45 @@ public class PaymentController {
 		String formattedNow = now.format(formatter);
 		return formattedNow;
 	}
-	
-	
+
+
+	public void requestMoney(ActionEvent actionEvent) {
+
+		HashMap<String,User> hashMap = null;
+		try {
+			hashMap = SerializeModel.deserialize();
+		} catch (HashMapNotFoundException e) {
+			e.printStackTrace();
+		}
+		SimpleUser su = (SimpleUser) hashMap.get(Main.getLoggedUser().getEmail());
+		Double suma = null;
+		try {
+			suma = Double.valueOf(moneyField.getText());
+		}catch(NumberFormatException e){
+			Alert alert = new Alert(Alert.AlertType.WARNING);
+			alert.setTitle("Pozor");
+			alert.setHeaderText("Nespr·vny form·t sumy");
+			alert.setContentText("Zadajte sumu ako ËÌslo");
+			alert.showAndWait();
+			return;
+		}
+
+		if(su.getWantMoney() == null) {
+			su.setWantMoney(suma);
+		    SerializeModel.serialize(hashMap);
+			moneyField.setText("");
+
+			Alert alert = new Alert(Alert.AlertType.INFORMATION);
+			alert.setTitle("Info");
+			alert.setHeaderText("éiadosù bola zaslan·!");
+			alert.setContentText("PoËkajte na schv·lenie ûiadosti administr·torom");
+			alert.showAndWait();
+		}else{
+			Alert alert = new Alert(Alert.AlertType.WARNING);
+			alert.setTitle("Pozor");
+			alert.setHeaderText("Predch·dzaj˙ca éiadosù sa eöte vybavuje!");
+			alert.setContentText("PoËkajte na vybavenie ûiadosti administr·torom");
+			alert.showAndWait();
+		}
+	}
 }

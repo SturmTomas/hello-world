@@ -18,8 +18,8 @@ public class MyAnimalModel {
 	
 	public static void addAnimalToSUser(SimpleUser loggedUser,Animal animal) throws Exception {
 		
-		HashMap<String, SimpleUser> hashMap = SerializeModel.deserialize();
-		SimpleUser su = hashMap.get(loggedUser.getEmail());
+		HashMap<String, User> hashMap = SerializeModel.deserialize();
+		SimpleUser su = (SimpleUser) hashMap.get(loggedUser.getEmail());
 		su.addAnimal(animal);
 		hashMap.put(su.getEmail(), su);
 		SerializeModel.serialize(hashMap);

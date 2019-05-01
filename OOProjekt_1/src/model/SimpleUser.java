@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import animals.Animal;
+import javafx.scene.control.Button;
 
 public class SimpleUser extends User implements Serializable {
     
@@ -21,6 +22,42 @@ public class SimpleUser extends User implements Serializable {
 	private String cop;
 	private String datnar;
 	private Double ucet;
+	private Double wantMoney;
+	private Button acceptMoney;
+	private Button rejectMoney;
+	private String requestMsg;
+
+	public String getRequestMsg() {
+		return requestMsg;
+	}
+
+	public void setRequestMsg(String requestMsg) {
+		this.requestMsg = requestMsg;
+	}
+
+	public Button getAcceptMoney() {
+		return acceptMoney;
+	}
+
+	public void setAcceptMoney(Button acceptMoney) {
+		this.acceptMoney = acceptMoney;
+	}
+
+	public Button getRejectMoney() {
+		return rejectMoney;
+	}
+
+	public void setRejectMoney(Button rejectMoney) {
+		this.rejectMoney = rejectMoney;
+	}
+
+	public Double getWantMoney() {
+		return wantMoney;
+	}
+
+	public void setWantMoney(Double wantMoney) {
+		this.wantMoney = wantMoney;
+	}
 
 	public Double getUcet() {
 		return ucet;
@@ -105,12 +142,6 @@ public class SimpleUser extends User implements Serializable {
 	public void setCop(String cop) {
 		this.cop = cop;
 	}
-
-	
-
-
-
-	
 
 }
 

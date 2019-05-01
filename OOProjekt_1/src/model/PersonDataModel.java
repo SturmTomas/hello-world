@@ -15,7 +15,7 @@ public class PersonDataModel {
 	
 	public static void addPersonData(SimpleUser personData) throws Exception {
 		
-		HashMap<String, SimpleUser> hm = SerializeModel.deserialize();
+		HashMap<String, User> hm = SerializeModel.deserialize();
 		SimpleUser su = (SimpleUser) hm.get(Main.getLoggedUser().getEmail());
 		su.setAdresa(personData.getAdresa());
 		su.setCop(personData.getCop());

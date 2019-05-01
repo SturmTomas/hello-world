@@ -83,7 +83,7 @@ public class AnimalController {
 		
 		MyAnimalModel.addAnimalToSUser(su,animal);
 
-		//Main.mainController.nextPane("platby");
+		MainController.getInstance().nextPane("platby");
 	}
 
 }

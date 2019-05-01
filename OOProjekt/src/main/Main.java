@@ -12,7 +12,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.*;
 import model.*;
 import javafx.scene.*;
-
+//test commit
 public class Main extends Application{
 	
 	private static User loggedUser;

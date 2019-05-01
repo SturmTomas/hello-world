@@ -1,11 +1,13 @@
 package controller;
-import gui.*;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -22,6 +24,7 @@ public class MainController {
 	@FXML AnchorPane rootPane;
 	
 	
+	
 	public void myPersonData(ActionEvent event) throws Exception {
 		
 		nextPane("mojeUdaje");
@@ -34,9 +37,17 @@ public class MainController {
 		nextPane("udaje");
 	}
 	
-public void addAnimal(ActionEvent event) throws Exception {
+	public void addAnimal(ActionEvent event) throws Exception {
 		
 		nextPane("zvierata");
+	}
+	public void myAnimals(ActionEvent event) throws Exception {
+		
+		nextPane("mojeZvierata");
+	}
+	public void myPayments(ActionEvent event) throws Exception {
+		
+		nextPane("platby");
 	}
 	
 	public Label getStatus() {
@@ -62,8 +73,16 @@ public void setStatus(Label status) {
 		
 		AnchorPane pane = FXMLLoader.load(getClass().getResource("/gui/"+fxmlName+".fxml"));
 		rootPane.getChildren().setAll(pane);
-		
-		
-		
+	
 	}
+	
+	public void logout(ActionEvent actionEvent) throws Exception {
+
+
+		   Main.setLoggedUser(null);
+		   nextScene("gui","E-pets");
+		}
+
+
+
 }

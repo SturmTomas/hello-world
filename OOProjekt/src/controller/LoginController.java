@@ -1,10 +1,10 @@
 package controller;
-import database.*;
+
 import model.*;
-import gui.*;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
@@ -18,7 +18,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import main.*;
-import model.LoginModel;
 
 
 public class LoginController   {
@@ -43,7 +42,7 @@ public class LoginController   {
 	private Button login;
 	
 	
-	@FXML Label isConnected; 
+
 	
 	@FXML private void initialize() {
 		
@@ -56,14 +55,13 @@ public class LoginController   {
 				e1.printStackTrace();
 			}
 		});
-		
+		username.setText("a@a.a");
+		password.setText("a");
 	}
+
 	
 public void login(ActionEvent event) throws Exception {
-		
-		
-		//if(username.getText().equals("") && password.getText().equals("")) 
-	
+		 
 			if(LoginModel.login(new SimpleUser(username.getText(),password.getText()))) 
 			{
 			nextScene("front", "front");
@@ -88,7 +86,7 @@ public void nextScene(String fxmlName, String title) throws IOException {
 @FXML
 public void register() throws Exception {
 	
-	System.out.println("haloo");
+
 		if( !email.getText().matches("[a-zA-Z0-9.-_]+@[a-z]+.[a-z]+")	|| pword.getText().isEmpty() || reppword.getText().isEmpty()) {
 		status.setText("Registrácia neúspešná\n");
 		return;
@@ -97,7 +95,24 @@ public void register() throws Exception {
 		status.setText("Registrácia neúspešná\n Heslá sa nezhodujú");
 		return;
 		}
-
+		
+		boolean exist = true;
+		HashMap<String, SimpleUser> hashMap = null;
+		
+		try {
+			hashMap = SerializeModel.deserialize();
+		} catch (HashMapNotFoundException e) {
+			exist=false;
+		}
+		
+		if(exist) {
+			if(hashMap.get(email.getText()) != null) {
+				status.setText("Zadaný email sa už používa, zvolte si iný");
+				return;
+			};
+		}
+		
+		
 		LoginModel.register(new SimpleUser(email.getText(),pword.getText()));
 	
 			try {

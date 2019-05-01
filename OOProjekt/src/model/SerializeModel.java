@@ -6,7 +6,7 @@ import java.util.HashMap;
 public class SerializeModel {
    
 	
-	public static void serialize(HashMap<String, SimpleUser> hashMap) {
+	public static void serialize(HashMap<String, SimpleUser> hashMap)  {
 		
 	
 	try
@@ -23,7 +23,7 @@ public class SerializeModel {
            ioe.printStackTrace();
      }
 	}
-	public static HashMap<String, SimpleUser> deserialize() {
+	public static HashMap<String, SimpleUser> deserialize() throws HashMapNotFoundException {
 		
 		HashMap<String, SimpleUser> hashMap = new HashMap<String, SimpleUser>();
 		  try
@@ -34,11 +34,11 @@ public class SerializeModel {
 	         ois.close();
 	         fis.close();
 	         return hashMap;
-	      }catch(IOException ioe)
-	      {
-	         ioe.printStackTrace();
-	         return null;
-	      }catch(ClassNotFoundException c)
+	      
+	      }catch(IOException ioe) {
+	    	  throw new HashMapNotFoundException();  
+	      }
+		  catch(ClassNotFoundException c)
 	      {
 	         System.out.println("Class not found");
 	         c.printStackTrace();

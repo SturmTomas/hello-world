@@ -1,6 +1,4 @@
 package main;
-import gui.*;
-import database.*;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -10,6 +8,7 @@ import java.util.Set;
 import controller.*;
 import javafx.application.*;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.Pane;
 import javafx.stage.*;
 import model.*;
 import javafx.scene.*;
@@ -18,6 +17,7 @@ public class Main extends Application{
 	
 	private static User loggedUser;
 	private static Stage window;
+	public static MainController mainController;
 	
 	
 	public static void main(String[] args) {
@@ -26,8 +26,8 @@ public class Main extends Application{
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		//HashMap<String, SimpleUser> hashMap = new HashMap<String, SimpleUser>();
-		//SerializeModel.serialize(hashMap);
+//		HashMap<String, SimpleUser> hashMap = new HashMap<String, SimpleUser>();
+//		SerializeModel.serialize(hashMap);
 		Parent root = FXMLLoader.load(getClass().getResource("/gui/gui.fxml"));
 		Scene scene = new Scene(root);
 		
@@ -36,17 +36,17 @@ public class Main extends Application{
 		primaryStage.show();
 		
 		window = primaryStage;
-	
-		      
+
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/front.fxml"));
+		mainController =  fxmlLoader.getController();
 
 	}
-	 public static Stage getPrimaryStage() {
-	        return window;
-	    }
-		public static User getLoggedUser() {
+
+	public static Stage getPrimaryStage() { return window; }
+	public static User getLoggedUser() {
 			return loggedUser;
 		}
-		public static void setLoggedUser(User loggedUser) {
+	public static void setLoggedUser(User loggedUser) {
 			Main.loggedUser = loggedUser;
 		}
 

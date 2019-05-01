@@ -1,7 +1,9 @@
 package model;
 
+import java.io.IOException;
 import java.util.HashMap;
 
+import animals.Animal;
 import controller.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
@@ -14,7 +16,7 @@ public class MyAnimalModel {
 
 	
 	
-	public static void addAnimalToSUser(SimpleUser loggedUser,Animal animal) {
+	public static void addAnimalToSUser(SimpleUser loggedUser,Animal animal) throws Exception {
 		
 		HashMap<String, SimpleUser> hashMap = SerializeModel.deserialize();
 		SimpleUser su = hashMap.get(loggedUser.getEmail());
@@ -22,10 +24,7 @@ public class MyAnimalModel {
 		hashMap.put(su.getEmail(), su);
 		SerializeModel.serialize(hashMap);
 		
-		hashMap = SerializeModel.deserialize();
-		SimpleUser su1 = hashMap.get(loggedUser.getEmail());
-		
-		System.out.println(" Animal name: "+su1.getAnimal("fido").getName() +"  "+ su1.getAnimal("fido").getCast());
+
 		
 	}
 }

@@ -4,9 +4,15 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import animals.Animal;
+
 public class SimpleUser extends User implements Serializable {
     
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8389291704465113457L;
 	private String lname;
 	private String fname;
 	private String adresa;
@@ -14,7 +20,16 @@ public class SimpleUser extends User implements Serializable {
 	private String mesto;
 	private String cop;
 	private String datnar;
-	
+	private Double ucet;
+
+	public Double getUcet() {
+		return ucet;
+	}
+
+	public void setUcet(Double ucet) {
+		this.ucet = ucet;
+	}
+
 	private HashMap<String, Animal> animals;
 	
 	
@@ -25,6 +40,11 @@ public class SimpleUser extends User implements Serializable {
 	public Animal getAnimal(String name) {
 		return animals.get(name);
 	}
+	 public HashMap<String, Animal> getAllAnimals(){
+	 
+		 return animals;
+	 }
+	 
 	public boolean addAnimal(Animal animal) {
 		if(animals == null) {
 		 animals = new HashMap<String, Animal>();

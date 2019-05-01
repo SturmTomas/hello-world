@@ -1,19 +1,32 @@
 package controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import animals.Animal;
+import animals.Animal.AnimType;
+import animals.Animal.Gender;
+import animals.Cat;
+import animals.Dog;
+import animals.Other;
+import animals.Reptile;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import main.Main;
 import model.*;
-import model.Animal.AnimType;
-import model.Animal.Gender;
+
+import static main.Main.getLoggedUser;
 
 
 public class AnimalController {
@@ -40,14 +53,37 @@ public class AnimalController {
 		ObservableList<String> availableChoices1 = FXCollections.observableList(list1);
 		gender.setItems(availableChoices1);
 		gender.setValue(((ArrayList<String>) list1).get(0));
+
 	}
 	
 	public void addAnimal(ActionEvent event) throws Exception {
 		
-		SimpleUser su = (SimpleUser) Main.getLoggedUser();
-		AnimalModel.addAnimalToSUser(su,new Animal(name.getText(),gender.getValue(),type.getValue(),cast.getText()));
+		Animal animal = null;
+		String nameStr =  name.getText();
+		String genderStr = gender.getValue();
+		String typeStr = type.getValue();
+		String castStr = cast.getText();
 		
-		   
+		switch( AnimType.get(typeStr)) {
+			case  PES : 
+				animal = new Dog(nameStr, genderStr, typeStr, castStr);
+				break;
+			case  MACKA:
+				animal = new Cat(nameStr, genderStr, typeStr, castStr);
+				break;
+			case  PLAZ:
+				animal = new Reptile(nameStr, genderStr, typeStr, castStr);
+				break;
+			case  INE:
+				animal = new Other(nameStr, genderStr, typeStr, castStr);
+				break;
+		}
+		
+		SimpleUser su = (SimpleUser) getLoggedUser();
+		
+		MyAnimalModel.addAnimalToSUser(su,animal);
 
+		//Main.mainController.nextPane("platby");
 	}
+
 }

@@ -1,5 +1,6 @@
 package model;
 
+import java.io.IOException;
 import java.util.HashMap;
 
 import controller.*;
@@ -12,7 +13,7 @@ public class PersonDataModel {
 
 	
 	
-	public static void addPersonData(SimpleUser personData) {
+	public static void addPersonData(SimpleUser personData) throws Exception {
 		
 		HashMap<String, SimpleUser> hm = SerializeModel.deserialize();
 		SimpleUser su = (SimpleUser) hm.get(Main.getLoggedUser().getEmail());

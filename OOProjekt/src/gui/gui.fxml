@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
    <children>
     <TextField fx:id="username" layoutX="31.0" layoutY="49.0" promptText="Prihlasovacie meno">
          <font>
@@ -31,7 +31,7 @@
          </font>
       </Label>
       
-      <Label fx:id="status" layoutX="347.0" layoutY="113.0" prefHeight="51.0" prefWidth="224.0">
+      <Label fx:id="status" layoutX="347.0" layoutY="113.0" prefHeight="51.0" prefWidth="224.0" text="......">
          <font>
             <Font size="21.0" />
          </font>

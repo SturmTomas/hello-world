@@ -3,6 +3,7 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane fx:id="frontScreen" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
@@ -16,10 +17,13 @@
                   <MenuItem fx:id="osUdaje1" mnemonicParsing="false" onAction="#personData" text="odhlásiť" />
                      </items>
                   </Menu>
-                  <Menu mnemonicParsing="false" text="Platby" />
+                  <Menu mnemonicParsing="false" text="Platby">
+               <items>
+                  <MenuItem fx:id="platby" mnemonicParsing="false" onAction="#myPayments" text="Moje platby" />
+               </items></Menu>
                   <Menu mnemonicParsing="false" text="Moje zvieratká">
                      <items>
-                        <MenuItem fx:id="mojeZvierata" mnemonicParsing="false" onAction="#addAnimal" text="Moje zvieratká" />
+                        <MenuItem fx:id="mojeZvierata" mnemonicParsing="false" onAction="#myAnimals" text="Moje zvieratká" />
                   <MenuItem fx:id="mojeZvierata1" mnemonicParsing="false" onAction="#addAnimal" text="Pridanie zvieratka" />
                      </items>
                   </Menu>
@@ -30,6 +34,7 @@
                   </Menu>
                </menus>
             </MenuBar>
-      <AnchorPane fx:id="rootPane" layoutY="27.0" prefHeight="200.0" prefWidth="200.0" />
+      <AnchorPane fx:id="rootPane" layoutY="62.0" prefHeight="540.0" prefWidth="800.0" />
+      <TextField fx:id="advPanel" layoutX="90.0" layoutY="27.0" prefHeight="35.0" prefWidth="710.0" />
    </children>
 </AnchorPane>

@@ -9,6 +9,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import main.Main;
@@ -27,6 +29,7 @@ import javafx.event.*;
 
 public class MainController {
 
+	@FXML private WebView webView;
 	@FXML private Label dateLabel;
 	@FXML private Label status;
 	@FXML AnchorPane rootPane;
@@ -37,6 +40,10 @@ public class MainController {
 	@FXML private void initialize() {
 
 		instance =this;
+
+		WebEngine webEngine = webView.getEngine();
+		webEngine.load("https://www.google.com/maps/search/Bratislava+psi+salon+veterinari");
+
 
 		Receiver receiver = new Receiver();
 		NotificationSender sender = new NotificationSender();

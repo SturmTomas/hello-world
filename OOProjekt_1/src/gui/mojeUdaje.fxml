@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="557.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.211" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MyPersonDataController">
+   <children>
+      <TextField fx:id="fname1" layoutX="299.0" layoutY="95.0" prefHeight="39.0" prefWidth="227.0" promptText="Meno">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="lname1" layoutX="297.0" layoutY="140.0" prefHeight="39.0" prefWidth="227.0" promptText="Priezvisko">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="datnar1" layoutX="300.0" layoutY="190.0" prefHeight="39.0" prefWidth="227.0" promptText="Dátum narodenia">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="cop1" layoutX="296.0" layoutY="239.0" prefHeight="39.0" prefWidth="234.0" promptText="Číslo občianskeho preukazu">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="adresa1" layoutX="296.0" layoutY="295.0" prefHeight="39.0" prefWidth="340.0" promptText=" Adresa trvalého pobytu">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="psc1" layoutX="299.0" layoutY="347.0" prefHeight="39.0" prefWidth="227.0" promptText="Poštové smerovacie číslo">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="mesto1" layoutX="299.0" layoutY="398.0" prefHeight="39.0" prefWidth="227.0" promptText="Mesto">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <Label layoutX="319.0" layoutY="49.0" prefHeight="46.0" prefWidth="173.0" text=" Osobné údaje" textAlignment="CENTER">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="148.0" layoutY="100.0" prefHeight="29.0" prefWidth="117.0" text="Meno">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="148.0" layoutY="145.0" prefHeight="29.0" prefWidth="117.0" text="Priezvisko">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="148.0" layoutY="195.0" prefHeight="29.0" prefWidth="117.0" text="Dátum narodenia">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="148.0" layoutY="244.0" prefHeight="29.0" prefWidth="117.0" text="Číslo OP">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="148.0" layoutY="300.0" prefHeight="29.0" prefWidth="117.0" text="Adresa ">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="148.0" layoutY="352.0" prefHeight="29.0" prefWidth="117.0" text="PSČ">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="148.0" layoutY="403.0" prefHeight="29.0" prefWidth="117.0" text="Mesto">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

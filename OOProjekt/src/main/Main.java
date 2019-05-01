@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
 
 import controller.*;
 import javafx.application.*;
@@ -12,12 +14,14 @@ import javafx.scene.layout.Pane;
 import javafx.stage.*;
 import model.*;
 import javafx.scene.*;
-//test commit
+
 public class Main extends Application{
 	
 	private static User loggedUser;
 	private static Stage window;
 	public static MainController mainController;
+	private static ScheduledExecutorService executorService;
+	private static Admin admin;
 	
 	
 	public static void main(String[] args) {
@@ -38,7 +42,11 @@ public class Main extends Application{
 		window = primaryStage;
 
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/front.fxml"));
-		mainController =  fxmlLoader.getController();
+		mainController = fxmlLoader.getController();
+
+		admin = new Admin();
+		admin.setEmail("aa@a.a");
+		admin.setPassword("a");
 
 	}
 
@@ -49,5 +57,9 @@ public class Main extends Application{
 	public static void setLoggedUser(User loggedUser) {
 			Main.loggedUser = loggedUser;
 		}
-
+	public static ScheduledExecutorService getExecutorService() { return executorService; }
+	public static void setExecutorService(ScheduledExecutorService executorService) {
+		Main.executorService = executorService;
+	}
+	public static Admin getAdmin() {return admin;	}
 }

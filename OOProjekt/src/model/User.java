@@ -19,6 +19,7 @@ public abstract class User implements Serializable{
 	public User() {
 		
 	}
+
 	public String getPassword() {
 		return password;
 	}

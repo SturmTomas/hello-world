@@ -5,6 +5,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="572.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PaymentController">
    <children>
       <TableView fx:id="tableToPay" layoutX="14.0" layoutY="69.0" prefHeight="250.0" prefWidth="400.0" />
@@ -24,5 +26,16 @@
             <Font size="20.0" />
          </font>
       </Label>
+
+      <TextField fx:id="moneyField" layoutX="180.0" layoutY="400.0" promptText="Suma v EUR" prefWidth="150">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </TextField>
+      <Button fx:id="moneyBtn" defaultButton="true" layoutX="350.0" layoutY="400.0" mnemonicParsing="false" onAction="#requestMoney" text="Požiadať o navýšenie kreditu">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

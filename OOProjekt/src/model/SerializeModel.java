@@ -6,9 +6,8 @@ import java.util.HashMap;
 public class SerializeModel {
    
 	
-	public static void serialize(HashMap<String, SimpleUser> hashMap)  {
-		
-	
+	public static void serialize(HashMap<String, User> hashMap)  {
+
 	try
     {
            FileOutputStream fos =
@@ -23,14 +22,14 @@ public class SerializeModel {
            ioe.printStackTrace();
      }
 	}
-	public static HashMap<String, SimpleUser> deserialize() throws HashMapNotFoundException {
+	public static HashMap<String, User> deserialize() throws HashMapNotFoundException {
 		
-		HashMap<String, SimpleUser> hashMap = new HashMap<String, SimpleUser>();
+		HashMap<String, User> hashMap = new HashMap<String, User>();
 		  try
 	      {
 	         FileInputStream fis = new FileInputStream("hashmap.ser");
 	         ObjectInputStream ois = new ObjectInputStream(fis);
-	         hashMap = (HashMap<String,SimpleUser>) ois.readObject();
+	         hashMap = (HashMap<String,User>) ois.readObject();
 	         ois.close();
 	         fis.close();
 	         return hashMap;

@@ -21,9 +21,9 @@ public class Receiver implements NotificationListener {
     private AnchorPane adsPane;
 
     public Receiver(){
-        adverTextDog = new Text(800, 30, "");
+        adverTextDog = new Text(800, 22, "");
         adverTextDog.setFill(Paint.valueOf("blue"));
-        adverTextCat =  new Text(800, 50, "");
+        adverTextCat =  new Text(800, 40, "");
         adverTextCat.setFill(Paint.valueOf("red"));
         MainController mc = MainController.getInstance();
         adsPane = mc.getAdsPane();

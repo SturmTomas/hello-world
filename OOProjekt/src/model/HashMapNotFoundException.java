@@ -5,6 +5,6 @@ public class HashMapNotFoundException extends Exception {
 
 
 	public HashMapNotFoundException() {	
-	super("Súbor s hashmapou nenájdený!");
+	super("Sï¿½bor s hashmapou nenï¿½jdenï¿½!");
 	}
 }

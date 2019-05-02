@@ -22,7 +22,7 @@ public class Dog extends Animal implements Serializable{
 		this.paymentDate = paymentDate;
 	}
 
-	private transient Button payButton = new Button("Zaplatiù");
+	private transient Button payButton = new Button("Zaplati≈•");
 	 
 	 public Button getPayButton() {
 		return payButton;

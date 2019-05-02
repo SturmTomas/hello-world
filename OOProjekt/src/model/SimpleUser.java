@@ -21,11 +21,39 @@ public class SimpleUser extends User implements Serializable {
 	private String mesto;
 	private String cop;
 	private String datnar;
+	private HashMap<String, Animal> animals;
 	private Double ucet;
 	private Double wantMoney;
 	private Button acceptMoney;
 	private Button rejectMoney;
 	private String requestMsg;
+	private ArrayList<Order> orders;
+	private ArrayList<Order> rejectedOrders = new ArrayList<>();
+	private ArrayList<Order> acceptedOrders =  new ArrayList<>();
+
+	public ArrayList<Order> getAcceptedOrders() {
+		return acceptedOrders;
+	}
+
+	public void setAcceptedOrders(ArrayList<Order> acceptedOrders) {
+		this.acceptedOrders = acceptedOrders;
+	}
+
+	public ArrayList<Order> getRejectedOrders() {
+		return rejectedOrders;
+	}
+
+	public void setRejectedOrders(ArrayList<Order> rejectedOrders) {
+		this.rejectedOrders = rejectedOrders;
+	}
+
+	public void setOrders(ArrayList<Order> orders) {
+		this.orders = orders;
+	}
+
+	public ArrayList<Order> getOrders() {
+		return orders;
+	}
 
 	public String getRequestMsg() {
 		return requestMsg;
@@ -67,9 +95,6 @@ public class SimpleUser extends User implements Serializable {
 		this.ucet = ucet;
 	}
 
-	private HashMap<String, Animal> animals;
-	
-	
 	public SimpleUser(String email,String password) {
 		super(email, password);
 	}	
@@ -89,6 +114,19 @@ public class SimpleUser extends User implements Serializable {
 		animals.put(animal.getName(),animal);
 		return true;
 	}
+
+	public boolean addOrder(Order order){
+		if(orders == null){
+			orders = new ArrayList<Order>();
+		}
+		orders.add(order);
+		return true;
+	}
+
+	public boolean removeOrder(Order order){
+		return orders.remove(order);
+	}
+
 	public SimpleUser(String fname, String lname, String adresa,String datnar
 					  ,Integer psc,String cop,String mesto) {
 		this.fname = fname;

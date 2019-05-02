@@ -19,6 +19,7 @@ import model.*;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.concurrent.Executors;
@@ -29,7 +30,10 @@ import javafx.event.*;
 
 public class MainController {
 
-	@FXML private WebView webView;
+	@FXML private Button rejectOkBtn;
+	@FXML private Button acceptOkBtn;
+	@FXML private TextArea acceptArea;
+	@FXML private TextArea rejectArea;
 	@FXML private Label dateLabel;
 	@FXML private Label status;
 	@FXML AnchorPane rootPane;
@@ -40,10 +44,6 @@ public class MainController {
 	@FXML private void initialize() {
 
 		instance =this;
-
-		WebEngine webEngine = webView.getEngine();
-		webEngine.load("https://www.google.com/maps/search/Bratislava+psi+salon+veterinari");
-
 
 		Receiver receiver = new Receiver();
 		NotificationSender sender = new NotificationSender();
@@ -72,6 +72,32 @@ public class MainController {
 
 			su.setRequestMsg(null);
 			SerializeModel.serialize(hashMap);
+		}
+
+		if(su.getAcceptedOrders().size()>0){
+			acceptArea.setVisible(true);
+			acceptOkBtn.setVisible(true);
+
+			for(Order order : su.getAcceptedOrders()){
+				acceptArea.appendText(String.join(" ",order.getName(),order.getDate(),"Akceptované","\n" ));
+			}
+
+		}else{
+			acceptArea.setVisible(false);
+			acceptOkBtn.setVisible(false);
+		}
+
+		if(su.getRejectedOrders().size()>0){
+			rejectArea.setVisible(true);
+			rejectOkBtn.setVisible(true);
+
+			for(Order order : su.getRejectedOrders()){
+				rejectArea.appendText(String.join(" ",order.getName(),order.getDate(),"Zamietnuté","\n" ));
+			}
+
+		}else{
+			rejectArea.setVisible(false);
+			rejectOkBtn.setVisible(false);
 		}
 
 
@@ -148,4 +174,39 @@ public void setStatus(Label status) {
 		nextScene("gui","E-pets");
 	}
 
+	public void toServices(ActionEvent actionEvent) throws Exception {
+		nextPane("services");
+	}
+
+	public void acceptOk(ActionEvent actionEvent) {
+		HashMap<String,User> hashMap = null;
+		try {
+			hashMap = SerializeModel.deserialize();
+		} catch (HashMapNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		SimpleUser su = (SimpleUser) hashMap.get(Main.getLoggedUser().getEmail());
+		su.setAcceptedOrders(new ArrayList<Order>());
+		SerializeModel.serialize(hashMap);
+
+		acceptArea.setVisible(false);
+		acceptOkBtn.setVisible(false);
+	}
+
+	public void rejectOk(ActionEvent actionEvent) {
+		HashMap<String,User> hashMap = null;
+		try {
+			hashMap = SerializeModel.deserialize();
+		} catch (HashMapNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		SimpleUser su = (SimpleUser) hashMap.get(Main.getLoggedUser().getEmail());
+		su.setRejectedOrders(new ArrayList<Order>());
+		SerializeModel.serialize(hashMap);
+
+		rejectArea.setVisible(false);
+		rejectOkBtn.setVisible(false);
+	}
 }

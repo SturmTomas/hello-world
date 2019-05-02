@@ -74,7 +74,7 @@ public class LoginController   {
 				nextScene("adminView","Admin View");
 			}
 
-			status.setText("Prihlásenie neúspešné");
+			status.setText("PrihlÃ¡senie neÃºspeÅ¡nÃ©");
 		}
 	}
 
@@ -95,11 +95,11 @@ public class LoginController   {
 	
 	System.out.println("haloo");
 		if( !email.getText().matches("[a-zA-Z0-9.-_]+@[a-z]+.[a-z]+")	|| pword.getText().isEmpty() || reppword.getText().isEmpty()) {
-		status.setText("Registrácia neúspešná\n");
+		status.setText("RegistrÃ¡cia neÃºspeÅ¡nÃ¡\n");
 		return;
 		}
 		if ( !(reppword.getText().equals(pword.getText()))){
-		status.setText("Registrácia neúspešná\n Heslá sa nezhodujú");
+		status.setText("RegistrÃ¡cia neÃºspeÅ¡nÃ¡\n HeslÃ¡ sa nezhodujÃº");
 		return;
 		}
 		
@@ -114,7 +114,7 @@ public class LoginController   {
 		
 		if(exist) {
 			if(hashMap.get(email.getText()) != null) {
-				status.setText("Zadanı email sa u pouíva, zvolte si inı");
+				status.setText("ZadanÃ½ email sa uÅ¾ pouÅ¾Ã­va, zvolte si inÃ½");
 				return;
 			};
 		}
@@ -123,7 +123,7 @@ public class LoginController   {
 		LoginModel.register(new SimpleUser(email.getText(),pword.getText()));
 	
 			try {
-				nextScene("front", "Najlepšia appka na celom šírom svete");
+				nextScene("front", "NajlepÅ¡ia appka na celom Å¡Ã­rom svete");
 			} catch (IOException e1) {
 				
 				e1.printStackTrace();

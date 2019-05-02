@@ -20,7 +20,7 @@ public class Animal implements Serializable {
 	 private String gender;
 
 	public enum AnimType{
-		 PES("Pes"),MACKA("MaËka"),PLAZ("Plaz"),INE("InÈ");
+		 PES("Pes"),MACKA("Maƒçka"),PLAZ("Plaz"),INE("In√©");
 		 
 		 private final String animType;
 		 private AnimType(String animType) {

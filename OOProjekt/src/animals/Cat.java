@@ -14,6 +14,7 @@ public class Cat extends Animal implements Serializable{
 	private  final Double payment = 20.0;
 	private boolean paid;
 	private String paymentDate;
+	private transient Button payButton = new Button("Zaplati≈•");
 
 	public String getPaymentDate() {
 		return paymentDate;
@@ -23,7 +24,7 @@ public class Cat extends Animal implements Serializable{
 		this.paymentDate = paymentDate;
 	}
 
-	private transient Button payButton = new Button("Zaplatiù");
+
 	 
 	 public Button getPayButton() {
 		return payButton;
@@ -32,6 +33,7 @@ public class Cat extends Animal implements Serializable{
 	public void setPayButton(Button payButton) {
 		this.payButton = payButton;
 	}
+
 	public Cat(String name, String gender, String animType, String cast) {
 		super(name, gender, animType, cast);
 		paid = false;

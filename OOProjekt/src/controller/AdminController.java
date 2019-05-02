@@ -16,6 +16,7 @@ import main.Main;
 import model.*;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -23,6 +24,9 @@ import java.util.List;
 public class AdminController {
 
 
+    @FXML private Label empLabel;
+    @FXML private Label ordersLabel;
+    @FXML private TableView tableOrders;
     @FXML private Button registerEmp;
     @FXML private TableView tableUser;
     @FXML private TableView tableEmp;
@@ -38,15 +42,135 @@ public class AdminController {
            password.setVisible(false);
            username.setVisible(false);
            registerEmp.setVisible(false);
+           tableOrders.setVisible(true);
+           ordersLabel.setVisible(true);
+           empLabel.setVisible(false);
        }else{
            tableEmp.setVisible(true);
            password.setVisible(true);
            username.setVisible(true);
            registerEmp.setVisible(true);
+           tableOrders.setVisible(false);
+           ordersLabel.setVisible(false);
+           empLabel.setVisible(true);
        }
 
         updateEmpTableView();
         updateUserTableView();
+        updateOrdersTableView();
+    }
+
+    private void updateOrdersTableView() throws HashMapNotFoundException {
+        HashMap<String, User> hashMap = SerializeModel.deserialize();
+        List<Order> listOrders = new ArrayList<Order>();
+
+        for(User user : hashMap.values()) {
+            if (user instanceof SimpleUser) {
+                List<Order> userOrders =((SimpleUser) user).getOrders();
+                for(Order userOrder : userOrders){
+                    Button acceptButton = new Button("ANO");
+                    acceptButton.setOnMouseClicked(event -> acceptOrder(((SimpleUser) user).getEmail(), userOrder ));
+                    userOrder.setAcceptOrder(acceptButton);
+
+                    Button rejectButton = new Button("NIE");
+                    rejectButton.setOnMouseClicked(event -> rejectOrder(((SimpleUser) user).getEmail(), userOrder ));
+                    userOrder.setRejectOrder(rejectButton);
+
+                    listOrders.add(userOrder);
+                }
+            }
+        }
+
+        ObservableList<Order> availableChoices = FXCollections.observableList(listOrders);
+
+        TableColumn<Order, String> emailColumn = new TableColumn<Order, String>("Email");
+        emailColumn.setMinWidth(90);
+        emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
+
+        TableColumn<SimpleUser, String> serviceColumn = new TableColumn<SimpleUser, String>("Služba");
+        serviceColumn.setMinWidth(90);
+        serviceColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+
+        TableColumn<SimpleUser, String> dateColumn = new TableColumn<SimpleUser, String>("Čas");
+        dateColumn.setMinWidth(60);
+        dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
+
+        TableColumn<SimpleUser, String> acceptColumn = new TableColumn<SimpleUser, String>();
+        acceptColumn.setMaxWidth(70);
+        acceptColumn.setCellValueFactory(new PropertyValueFactory<>("acceptOrder"));
+
+        TableColumn<SimpleUser, String> rejectColumn = new TableColumn<SimpleUser, String>();
+        rejectColumn.setMaxWidth(70);
+        rejectColumn.setCellValueFactory(new PropertyValueFactory<>("rejectOrder"));
+
+
+        tableOrders.setItems(availableChoices);
+        tableOrders.getColumns().setAll(emailColumn,serviceColumn,dateColumn,acceptColumn,rejectColumn);
+        tableOrders.setPlaceholder( new Label("Žiadne objednávky"));
+    }
+
+    private void acceptOrder( String email, Order order){
+
+        HashMap<String,User> hashMap = null;
+        try {
+            hashMap = SerializeModel.deserialize();
+        } catch (HashMapNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        SimpleUser su = (SimpleUser) hashMap.get(email);
+
+        List<Order> userOrders =su.getOrders();
+        for(Order userOrder : userOrders){
+            if(userOrder.getName().equals(order.getName()) && userOrder.getDate().equals(order.getDate())){
+                su.removeOrder(userOrder);
+                break;
+            }
+        }
+
+        ArrayList<Order> acceptedOrders = su.getAcceptedOrders();
+        acceptedOrders.add(order);
+        su.setAcceptedOrders(acceptedOrders);
+
+        SerializeModel.serialize(hashMap);
+
+        try {
+            updateOrdersTableView();
+        } catch (HashMapNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void rejectOrder( String email, Order order){
+
+        HashMap<String,User> hashMap = null;
+        try {
+            hashMap = SerializeModel.deserialize();
+        } catch (HashMapNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        SimpleUser su = (SimpleUser) hashMap.get(email);
+
+        List<Order> userOrders =su.getOrders();
+        for(Order userOrder : userOrders){
+            if(userOrder.getName().equals(order.getName()) && userOrder.getDate().equals(order.getDate())){
+                su.removeOrder(userOrder);
+                break;
+            }
+        }
+
+        ArrayList<Order> rejectedOrders = su.getRejectedOrders();
+        rejectedOrders.add(order);
+        su.setRejectedOrders(rejectedOrders);
+
+        SerializeModel.serialize(hashMap);
+
+        try {
+            updateOrdersTableView();
+        } catch (HashMapNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     private void updateUserTableView() throws HashMapNotFoundException {
@@ -76,23 +200,23 @@ public class AdminController {
         ObservableList<SimpleUser> availableChoices = FXCollections.observableList(listUser);
 
         TableColumn<SimpleUser, String> emailColumn = new TableColumn<SimpleUser, String>("Email");
-        emailColumn.setMinWidth(80);
+        emailColumn.setMinWidth(90);
         emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
 
         TableColumn<SimpleUser, String> passwordColumn = new TableColumn<SimpleUser, String>("Heslo");
-        passwordColumn.setMinWidth(80);
+        passwordColumn.setMinWidth(90);
         passwordColumn.setCellValueFactory(new PropertyValueFactory<>("password"));
 
-        TableColumn<SimpleUser, String> moneyColumn = new TableColumn<SimpleUser, String>("Židosť");
-        moneyColumn.setMinWidth(80);
+        TableColumn<SimpleUser, String> moneyColumn = new TableColumn<SimpleUser, String>("Žiadosť");
+        moneyColumn.setMinWidth(60);
         moneyColumn.setCellValueFactory(new PropertyValueFactory<>("wantMoney"));
 
         TableColumn<SimpleUser, String> acceptColumn = new TableColumn<SimpleUser, String>();
-        acceptColumn.setMinWidth(80);
+        acceptColumn.setMaxWidth(70);
         acceptColumn.setCellValueFactory(new PropertyValueFactory<>("acceptMoney"));
 
         TableColumn<SimpleUser, String> rejectColumn = new TableColumn<SimpleUser, String>();
-        rejectColumn.setMinWidth(80);
+        rejectColumn.setMaxWidth(70);
         rejectColumn.setCellValueFactory(new PropertyValueFactory<>("rejectMoney"));
 
 

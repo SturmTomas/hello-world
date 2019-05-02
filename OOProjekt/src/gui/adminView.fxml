@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Label?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="572.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.211" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminController">
    <children>
       <TextField fx:id="username" layoutX="20.0" layoutY="20.0" promptText="Prihlasovacie meno">
@@ -21,17 +22,34 @@
 
       <Button fx:id="registerEmp" defaultButton="true" layoutX="20.0" layoutY="140.0" mnemonicParsing="false" onAction="#registerEmp" text="registrovať zamestnanca">
          <font>
-            <Font size="24.0" />
+            <Font size="20.0" />
          </font>
       </Button>
 
+      <Label fx:id= "empLabel" ellipsisString="" layoutX="125.0" layoutY="222.0" prefWidth="200.0" text="Zamestnanci" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
       <TableView fx:id= "tableEmp" layoutX="20.0" layoutY="250.0" prefHeight="300.0" prefWidth="300.0"  />
 
-      <TableView fx:id= "tableUser" layoutX="360.0" layoutY="20.0" prefHeight="480.0" prefWidth="400.0"  />
-
-      <Button fx:id="login" defaultButton="true" layoutX="500.0" layoutY="510.0" mnemonicParsing="false" onAction="#logout" text="odhlásiť">
+      <Label fx:id= "ordersLabel" ellipsisString="" layoutX="140.0" layoutY="5.0" prefWidth="250.0" text="Žiadosti o služby" textAlignment="CENTER">
          <font>
-            <Font size="24.0" />
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <TableView fx:id= "tableOrders" layoutX="10.0" layoutY="35.0" prefHeight="480.0" prefWidth="380.0"  />
+
+      <Label ellipsisString="" layoutX="480.0" layoutY="5.0" prefWidth="300.0" text="Použivatelia a Žiadosti o kredit" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <TableView fx:id= "tableUser" layoutX="400.0" layoutY="35.0" prefHeight="480.0" prefWidth="390.0"  />
+
+      <Button fx:id="login" defaultButton="true" layoutX="540.0" layoutY="522.0" mnemonicParsing="false" onAction="#logout" text="odhlásiť">
+         <font>
+            <Font size="20.0" />
          </font>
       </Button>
    </children>

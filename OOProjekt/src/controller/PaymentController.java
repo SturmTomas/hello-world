@@ -37,7 +37,7 @@ public class PaymentController {
 	private void updateTableView() throws HashMapNotFoundException {
 		HashMap<String, User> hashMap = SerializeModel.deserialize();
 		SimpleUser su = (SimpleUser) hashMap.get(Main.getLoggedUser().getEmail());
-		ucetLabel.setText("Zostatok na ˙Ëte: "+ su.getUcet().toString()+ " EUR");
+		ucetLabel.setText("Zostatok na √∫ƒçte: "+ su.getUcet().toString()+ " EUR");
 
 		HashMap<String, Animal> animals = su.getAllAnimals();
 		List<Animal> listToPay = new ArrayList<Animal>();
@@ -55,7 +55,7 @@ public class PaymentController {
 						} else {
 							listPaid.add(animal);
 						}
-						Button payButton = new Button("Zaplatiù");
+						Button payButton = new Button("Zaplati≈•");
 						payButton.setOnMouseClicked(event -> payForAnimal(animal.getName()));
 						((Dog) animal).setPayButton(payButton);
 					}
@@ -65,7 +65,7 @@ public class PaymentController {
 						} else {
 							listPaid.add(animal);
 						}
-						Button payButton = new Button("Zaplatiù");
+						Button payButton = new Button("Zaplati≈•");
 						payButton.setOnMouseClicked(event -> payForAnimal(animal.getName()));
 						((Cat) animal).setPayButton(payButton);
 
@@ -95,7 +95,7 @@ public class PaymentController {
 
 		tableToPay.setItems(availableChoicesToPay);
 		tableToPay.getColumns().setAll(nameColumn,typeColumn,costColumn,buttonColumn);
-		tableToPay.setPlaceholder( new Label("Nem·te ûiadne registrovanÈ alebo nezaplatenÈ zvierata"));
+		tableToPay.setPlaceholder( new Label("Nem√°te ≈æiadne registrovan√© alebo nezaplaten√© zvierata"));
 
 
 		// Table animals paid
@@ -109,13 +109,13 @@ public class PaymentController {
 		typeColumnPaid.setMinWidth(100);
 		typeColumnPaid.setCellValueFactory(new PropertyValueFactory<>("animType"));
 
-		TableColumn<Animal, String> typeColumnDate = new TableColumn<Animal, String>("D·tum platby");
+		TableColumn<Animal, String> typeColumnDate = new TableColumn<Animal, String>("D√°tum platby");
 		typeColumnDate.setMinWidth(160);
 		typeColumnDate.setCellValueFactory(new PropertyValueFactory<>("paymentDate"));
 
 		tablePaid.setItems(availableChoicesPaid);
 		tablePaid.getColumns().setAll(nameColumnPaid,typeColumnPaid,typeColumnDate);
-		tablePaid.setPlaceholder( new Label("Nem·te ûiadne zaplatenÈ zvierata"));
+		tablePaid.setPlaceholder( new Label("Nem√°te ≈æiadne zaplaten√© zvierata"));
 	}
 
 	private void payForAnimal(String animalName)  {
@@ -135,11 +135,11 @@ public class PaymentController {
 				((Dog)animal).setPaid(true);
 				((Dog)animal).setPaymentDate(getTime());
 			}else{
-				nedostatokLabel.setText("Nedostatok peÚazÌ na ˙Ëte!");
+				nedostatokLabel.setText("Nedostatok pe≈àaz√≠ na √∫ƒçte!");
 				Alert alert = new Alert(Alert.AlertType.ERROR);
 				alert.setTitle("Error");
 				alert.setHeaderText("Transakcia neprebehla!");
-				alert.setContentText("Nedostatok peÚazÌ na ˙Ëte!");
+				alert.setContentText("Nedostatok pe≈àaz√≠ na √∫ƒçte!");
 				alert.showAndWait();
 			}
 		}
@@ -150,11 +150,11 @@ public class PaymentController {
 				((Cat) animal).setPaid(true);
 				((Cat) animal).setPaymentDate(getTime());
 			}else{
-				nedostatokLabel.setText("Nedostatok peÚazÌ na ˙Ëte!");
+				nedostatokLabel.setText("Nedostatok pe≈àaz√≠ na √∫ƒçte!");
 				Alert alert = new Alert(Alert.AlertType.ERROR);
 				alert.setTitle("Error");
 				alert.setHeaderText("Transakcia neprebehla!");
-				alert.setContentText("Nedostatok peÚazÌ na ˙Ëte!");
+				alert.setContentText("Nedostatok pe≈àaz√≠ na √∫ƒçte!");
 				alert.showAndWait();
 			}
 		}
@@ -190,8 +190,8 @@ public class PaymentController {
 		}catch(NumberFormatException e){
 			Alert alert = new Alert(Alert.AlertType.WARNING);
 			alert.setTitle("Pozor");
-			alert.setHeaderText("Nespr·vny form·t sumy");
-			alert.setContentText("Zadajte sumu ako ËÌslo");
+			alert.setHeaderText("Nespr√°vny form√°t sumy");
+			alert.setContentText("Zadajte sumu ako ƒç√≠slo");
 			alert.showAndWait();
 			return;
 		}
@@ -203,14 +203,14 @@ public class PaymentController {
 
 			Alert alert = new Alert(Alert.AlertType.INFORMATION);
 			alert.setTitle("Info");
-			alert.setHeaderText("éiadosù bola zaslan·!");
-			alert.setContentText("PoËkajte na schv·lenie ûiadosti administr·torom");
+			alert.setHeaderText("≈Ωiados≈• bola zaslan√°!");
+			alert.setContentText("Poƒçkajte na schv√°lenie ≈æiadosti administr√°torom");
 			alert.showAndWait();
 		}else{
 			Alert alert = new Alert(Alert.AlertType.WARNING);
 			alert.setTitle("Pozor");
-			alert.setHeaderText("Predch·dzaj˙ca éiadosù sa eöte vybavuje!");
-			alert.setContentText("PoËkajte na vybavenie ûiadosti administr·torom");
+			alert.setHeaderText("Predch√°dzaj√∫ca ≈Ωiados≈• sa e≈°te vybavuje!");
+			alert.setContentText("Poƒçkajte na vybavenie ≈æiadosti administr√°torom");
 			alert.showAndWait();
 		}
 	}
